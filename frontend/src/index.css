@@ -1,0 +1,145 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 transition-colors duration-200;
+  }
+  body.dark {
+    @apply bg-slate-950 text-slate-100;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-slate-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-700 rounded;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-slate-600;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #f1f5f9;
+}
+.dark .leaflet-container {
+  background-color: #020617;
+}
+
+/* Custom Glassmorphism styles */
+.glass-panel {
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-lg;
+}
+
+/* Map hover overlays */
+.district-tooltip {
+  @apply bg-slate-900/90 dark:bg-slate-950/90 text-white border-0 rounded px-3 py-2 shadow-lg backdrop-blur-sm text-xs font-sans;
+}
+
+/* Animated radar pulse for outbreaks */
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.2);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+.radar-circle {
+  border-radius: 50%;
+  position: absolute;
+  animation: radar-pulse 2s infinite ease-out;
+}
+
+/* Light Mode CSS Overrides */
+html:not(.dark) body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html:not(.dark) .bg-slate-900,
+html:not(.dark) .bg-slate-900\/60,
+html:not(.dark) .bg-slate-900\/40 {
+  background-color: #f8fafc !important;
+}
+
+html:not(.dark) .bg-slate-950,
+html:not(.dark) .bg-slate-950\/85,
+html:not(.dark) .bg-slate-950\/80 {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .border-slate-800,
+html:not(.dark) .border-slate-800\/80,
+html:not(.dark) .border-slate-850 {
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) .text-slate-100,
+html:not(.dark) .text-white {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-slate-300,
+html:not(.dark) .text-slate-355,
+html:not(.dark) .text-slate-400,
+html:not(.dark) .text-slate-450 {
+  color: #475569 !important;
+}
+
+html:not(.dark) select,
+html:not(.dark) input,
+html:not(.dark) textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) select:focus,
+html:not(.dark) input:focus,
+html:not(.dark) textarea:focus {
+  border-color: #f26419 !important;
+}
+
+html:not(.dark) header,
+html:not(.dark) aside {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+html:not(.dark) .text-red-300 {
+  color: #991b1b !important;
+}
+html:not(.dark) .text-orange-300 {
+  color: #c2410c !important;
+}
+html:not(.dark) .text-yellow-300 {
+  color: #854d0e !important;
+}
+
+html:not(.dark) nav button:not(.bg-govsaffron) {
+  color: #475569 !important;
+}
+html:not(.dark) nav button:not(.bg-govsaffron):hover {
+  color: #0f172a !important;
+  background-color: #f1f5f9 !important;
+}
